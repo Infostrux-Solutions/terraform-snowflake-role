@@ -19,6 +19,7 @@ $ terraform apply
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 0.13.1 |
+| <a name="requirement_snowflake"></a> [snowflake](#requirement\_snowflake) | 0.40.0 |
 
 ## Providers
 
