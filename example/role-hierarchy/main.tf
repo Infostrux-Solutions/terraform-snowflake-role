@@ -10,7 +10,7 @@ terraform {
 }
 
 provider "snowflake" {
-  role = "sysadmin"
+  role = "accountadmin"
 }
 
 ################################################################################

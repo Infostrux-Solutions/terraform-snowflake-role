@@ -47,4 +47,4 @@ No modules.
 
 ## Authors
 
-Module is maintained by Charles-Etienne Couture and Matt van Zanten.
+Module is maintained by [Infostrux Solutions](mailto:opensource@infostrux.com)
