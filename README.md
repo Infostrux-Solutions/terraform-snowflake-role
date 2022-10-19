@@ -2,8 +2,46 @@
 
 Terraform module which creates Roles on Snowflake.
 
-## Examples
-<!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+## Usage
+### Simple Role:
+Create a single role.
+
+```hcl
+module "role" {
+  source  = "Infostrux-Solutions/role/snowflake"
+  name   = "EXAMPLE"
+}
+```
+
+### Role with grants:
+Create a single role and grant sysadmin access.
+
+```hcl
+module "role_with_grant" {
+  source        = "../../"
+  name          = "EXAMPLE_WITH_GRANTS"
+  granted_roles = ["SYSADMIN"]
+}
+```
+
+### Role Hierarchy:
+Creates a role hierarchy with two roles.
+
+```hcl
+module "under_sysadmin_role" {
+  source        = "../../"
+  name          = "UNDER_SYSADMIN"
+  granted_roles = ["SYSADMIN"]
+}
+
+module "middle_role" {
+  source        = "../../"
+  name          = "MIDDLE"
+  granted_roles = [module.under_sysadmin_role.role_name]
+}
+```
+
+<!-- BEGIN_TF_DOCS -->
 ## Requirements
 
 | Name | Version |
@@ -15,7 +53,7 @@ Terraform module which creates Roles on Snowflake.
 
 | Name | Version |
 |------|---------|
-| <a name="provider_snowflake"></a> [snowflake](#provider\_snowflake) | 0.40.0 |
+| <a name="provider_snowflake"></a> [snowflake](#provider\_snowflake) | >=0.40.0 |
 
 ## Modules
 
@@ -43,8 +81,10 @@ No modules.
 | <a name="output_role_comment"></a> [role\_comment](#output\_role\_comment) | Roles's comment. |
 | <a name="output_role_id"></a> [role\_id](#output\_role\_id) | Role's id. |
 | <a name="output_role_name"></a> [role\_name](#output\_role\_name) | Role's name. |
-<!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+<!-- END_TF_DOCS -->
 
 ## Authors
+Module is maintained by [Infostrux Solutions](mailto:opensource@infostrux.com) with help from [these awesome contributors](https://github.com/Infostrux-Solutions/terraform-snowflake-role/graphs/contributors).
 
-Module is maintained by [Infostrux Solutions](mailto:opensource@infostrux.com)
+## License
+Apache 2 Licensed. See [LICENSE](https://github.com/Infostrux-Solutions/terraform-snowflake-role/blob/main/LICENSE) for full details.
